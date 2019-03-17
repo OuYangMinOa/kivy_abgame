@@ -1,0 +1,422 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#kivy.require("1.10.0")
+# -*- coding: utf8 -*-
+ScreenManagement:
+	MainScreen:
+	data:
+	show_analysis:
+	show_detail:
+	computer:
+	player:
+	playway:
+	ans_analysis:
+	tocomputer:
+	toplayer:
+<MainScreen>
+	name:'MainScreen'
+	id: AB_name 
+	id: computer_name
+	id: player_name
+	id: play_way,analy
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Button:
+		pos_hint:{'x':.2,'y':.7}
+		size_hint:0.6,0.3
+		background_normal: "title.png"
+		background_down: 'title.png'
+		id: AB_name 
+
+	Button:
+		on_release:app.root.current="tocomputer"
+		pos_hint:{'x':.25,'y':.6}
+		size_hint:0.5,0.12
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: computer_name
+	Button:
+		on_release:app.root.current="toplayer"
+		on_release: root.count_down()
+		pos_hint:{'x':.25,'y':.46}
+		size_hint:0.5,0.12
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: player_name
+	Button:
+		on_press:root.data_data()
+		on_release:app.root.current="data"
+		pos_hint:{'x':.25,'y':.32}
+		size_hint:0.5,0.12
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: analy
+	Button:
+		on_release:app.root.current="playway"
+		pos_hint:{'x':.25,'y':.18}
+		size_hint:0.5,0.12
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: play_way
+<show_detail>:
+	name:'show_detail'
+	id:next,up,remind,detail,title,exit
+	id: updates
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Button:
+		on_release: root.next_page()
+		pos_hint:{'x':0.6,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:next
+	Button:
+		on_release: root.up_page()
+		pos_hint:{'x':0.2,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:up
+	Button:
+		on_release:app.root.current="show_analysis"
+		pos_hint:{'x':.0,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: exit
+	Button:
+		on_press:root.updata_data()
+		pos_hint:{'x':.0,'y':.4}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: updates
+	Label:
+		pos_hint:{'x':0.1,'y':0.25}
+		size_hint:0.8,0.6
+		id: detail
+	Label:
+		pos_hint:{'x':0.2,'y':0.85}
+		size_hint:0.6,0.15
+		id: title
+<show_analysis>
+	name:'show_analysis'
+	id:next,up,remind,detail,title
+	id:exit,updates
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Button:
+		on_release: root.next_page()
+		pos_hint:{'x':0.6,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:next
+	Button:
+		on_release: root.up_page()
+		pos_hint:{'x':0.2,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:up
+	Button:
+		
+		on_press:root.sure()
+		on_release:app.root.current="show_detail"
+		pos_hint:{'x':.8,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: remind
+	Button:
+		on_press:root.updata_data()
+		pos_hint:{'x':.0,'y':.4}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: updates
+	Button:
+		on_release:app.root.current="data"
+		pos_hint:{'x':.0,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: exit
+	Label:
+		pos_hint:{'x':0.1,'y':0.25}
+		size_hint:0.8,0.6
+		id: detail
+	Label:
+		pos_hint:{'x':0.2,'y':0.85}
+		size_hint:0.6,0.15
+		id: title
+<data>
+	name: 'data'
+	id:title,detail,reset
+	id:remind,exit
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Label:
+		pos_hint:{'x':0.2,'y':0.85}
+		size_hint:0.6,0.15
+		id: title
+	Label:
+		pos_hint:{'x':0.1,'y':0.25}
+		size_hint:0.8,0.6
+		id: detail
+	Button:
+		on_release:app.root.current="MainScreen"
+		pos_hint:{'x':.0,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: exit
+	Button:
+		on_release:root.reset()
+		pos_hint:{'x':.25,'y':.05}
+		size_hint:0.5,0.25
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: reset
+	Button:
+		on_release:root.remind()
+		pos_hint:{'x':.8,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: remind
+
+<ans_analysis>
+	name:'ans_analysis'
+	id:next,output,title,up
+	id: exit
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Button:
+		on_release: root.next_page()
+		pos_hint:{'x':0.6,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:next
+	Button:
+		on_release: root.up_page()
+		pos_hint:{'x':0.2,'y':0.1}
+		size_hint:0.2,0.2
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:up
+	Button:
+		on_release:root.ans_check()
+		pos_hint:{'x':.0,'y':.7}
+		size_hint:0.2,0.3
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: exit
+
+	Label:
+		pos_hint:{'x':0.2,'y':0.35}
+		size_hint:0.6,0.5
+		id: output
+	Label:
+		pos_hint:{'x':0.2,'y':0.85}
+		size_hint:0.6,0.15
+		id: title
+<tocomputer>
+	name:'tocomputer'
+	id:think_num
+	canvas:
+	    Color:
+	        rgba:0,0,0,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Button:
+		on_release: root.setgood()
+		on_release:app.root.current="computer"
+		background_down: 'button_back.png'
+		background_normal: 'button_back.png'
+		id:think_num
+	
+<computer>
+	name: 'computer'
+	id: computer_guess,accept,com_guess
+	id: computer_guess_ans,A,B,play_guess
+	id: leave
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Label:
+		pos_hint:{'x':0.1,'y':0.8}
+		size_hint:0.3,0.2
+		color: 0,0,1,1
+		id: computer_guess
+	Label:
+		pos_hint:{'x':0.4,'y':0.8}
+		size_hint:0.3,0.2
+		color: 0,0,1,1
+		id: computer_guess_ans
+
+	TextInput:
+		pos_hint:{'x':0.1,'y':0.7}
+		size_hint:0.2,0.05
+		id: A_in
+	Label:
+		pos_hint:{'x':0.3,'y':0.7}
+		size_hint:0.1,0.05
+		color: 0,0,1,1
+		id: A
+
+
+	TextInput:
+		pos_hint:{'x':0.5,'y':0.7}
+		size_hint:0.2,0.05
+		id: B_in
+	Label:
+		pos_hint:{'x':0.7,'y':0.7}
+		size_hint:0.1,0.05
+		color: 0,0,1,1
+		id: B
+	Button:
+		on_release:root.input()
+		
+		pos_hint:{'x':0.8,'y':0.65}
+		size_hint:0.2,0.2
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id:accept
+	Label:
+		pos_hint:{'x':0.6,'y':0.2}
+		size_hint:0.3,0.3
+		color: 1,1,1,1
+		id: com_guess
+	Label:
+		pos_hint:{'x':0.1,'y':0.2}
+		size_hint:0.3,0.3
+		color: 1,1,1,1
+		id: play_guess
+	Button:
+		on_release: root.clear()
+		
+		pos_hint:{'x':0.25,'y':0.1}
+		size_hint:0.5,0.13
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: leave
+
+
+<toplayer>
+	name: 'toplayer'
+	id: think, count_down
+	Label:
+		pos_hint:{'x':0.25,'y':0.55}
+		size_hint:0.5,0.3
+		color: 1,1,1,1
+		id: think
+	Label:
+		pos_hint:{'x':0.25,'y':0.325}
+		size_hint:0.5,0.3
+		color: 1,1,1,1
+		id: count_down
+		
+<player>
+	name: 'player'
+	id: guess_me,inp,accept,com_res,ply_res
+	id: leave
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Label:
+		pos_hint:{'x':0.25,'y':0.85}
+		size_hint:0.5,0.125
+		color: 1,1,1,1
+		id: guess_me
+	TextInput:
+		pos_hint:{'x':0.3,'y':0.75}
+		size_hint:0.3,0.05
+		id: inp
+	Button:
+		on_release: root.input()
+		pos_hint:{'x':0.7,'y':0.65}
+		size_hint:0.25,0.2
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: accept
+	Label:
+		pos_hint:{'x':0.55,'y':0.2}
+		size_hint:0.25,0.45
+		color: 1,1,1,1
+		id: com_res
+	Label:
+		pos_hint:{'x':0.2,'y':0.2}
+		size_hint:0.25,0.45
+		color: 1,1,1,1
+		id: ply_res
+	Button:
+		on_release: root.clear()
+		pos_hint:{'x':0.25,'y':0.1}
+		size_hint:0.5,0.13
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id: leave
+
+	
+
+
+<playway>
+	name: 'playway'
+	id: how,how_one,leave
+	canvas:
+	    Color:
+	        rgba:0.5,0.5,0.5,1
+	    Rectangle:
+        	pos: self.pos
+        	size: self.size
+	Label:
+		pos_hint:{'x':0.25,'y':0.85}
+		size_hint:0.5,0.15
+		color: 0,0,1,1
+		id: how
+	Label:
+		pos_hint:{'x':0.1,'y':0.2}
+		size_hint:0.8,0.6
+		color: 1,1,1,1
+		id: how_one
+	Button:
+		on_release:app.root.current="MainScreen"
+		pos_hint:{'x':0.35,'y':0.01}
+		size_hint:0.3,0.2
+		background_normal: 'button_back.png'
+		background_down: 'button_back.png'
+		id:leave
+
+
+
+
+
